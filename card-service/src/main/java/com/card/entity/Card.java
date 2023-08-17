@@ -23,23 +23,12 @@ public class Card {
     @OneToOne
     @JoinColumn(name = "type-currency")
     private TypeCurrency typeOfCurrency;
-
-    public Card(String name, Date date, TypeCurrency typeOfCurrency) {
-        String base = "000000";
-        try {
-            long numberCard = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
-            this.number = numberCard;
-            this.name = name;
-            this.date = date;
-            this.typeOfCurrency = typeOfCurrency;
-        } catch (Exception ex){
-            ex.printStackTrace(System.err);
-        }
-    }
+    private String status;
 
     public Card(Long numberId){
         try{
             this.number = Long.parseLong(numberId+""+(long) Math.floor(Math.random() * 9_000_000_000L));
+            System.out.println("number = " + number);
         } catch (Exception ex){
             ex.printStackTrace(System.err);
         }

@@ -14,7 +14,7 @@ import lombok.ToString;
 public class TypeCurrency {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "type-currency")
     private String typeOfCurrency;

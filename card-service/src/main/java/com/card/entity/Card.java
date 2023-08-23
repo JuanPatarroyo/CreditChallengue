@@ -16,7 +16,8 @@ public class Card {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Long cardId;
     private Long number;
     private String name;
     private Date date;
@@ -24,6 +25,7 @@ public class Card {
     @JoinColumn(name = "type-currency")
     private TypeCurrency typeOfCurrency;
     private String status;
+    private Long balance;
 
     public Card(Long numberId){
         try{

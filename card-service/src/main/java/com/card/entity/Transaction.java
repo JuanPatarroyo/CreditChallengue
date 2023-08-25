@@ -1,5 +1,6 @@
 package com.card.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,9 +20,11 @@ public class Transaction {
     private Long transactionId;
     @JoinColumn(name = "card_id")
     @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Card cardId;
     @Column(name = "transaction_date")
     private Date transactionDate;
-    private Long value;
+    @Column(name = "value")
+    private Long price;
 
 }

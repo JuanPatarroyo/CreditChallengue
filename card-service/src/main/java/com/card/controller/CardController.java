@@ -54,10 +54,10 @@ public class CardController {
         if (cardToChargeBalance.isEmpty()) {
             return new ResponseEntity<>("No se ha encontrado ninguna tarjeta con el id " + card.getCardId(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
         }
-        cardToChargeBalance.ifPresent(cardToCharge -> {
+        cardToChargeBalance.ifPresent((cardToCharge -> {
             cardToCharge.setBalance(cardToCharge.getBalance() + card.getBalance());
-            Card save = repository.save(cardToCharge);
-        });
+            repository.save(cardToCharge);
+        }));
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
